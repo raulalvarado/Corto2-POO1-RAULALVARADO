@@ -68,12 +68,12 @@ public class controlSeresVivos {
          List<SeresVivos> resp = new ArrayList<>();
         try
         {
-            PreparedStatement cmd = conect.prepareStatement("SELECT * from seresvivos");
+            PreparedStatement cmd = conect.prepareStatement("SELECT * from seresvivos t1 inner join seresvivos t2 on t1.codi_sere= t2.codi_refe_sere");
             //Vea la siguiente ayuda
             ResultSet rs = cmd.executeQuery();
             while(rs.next())
             {
-                resp.add(new SeresVivos(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
+                resp.add(new SeresVivos(rs.getInt(1),rs.getString(5),rs.getString(3),rs.getInt(6)));
                          // <----- Hay que llenar con los objetos
             }
         }
